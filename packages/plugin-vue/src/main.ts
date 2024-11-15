@@ -66,6 +66,7 @@ export async function transformMain(
 
   // feature information
   const attachedProps: [string, string][] = []
+  // .vue 支持多个 <style> 标签, 判断是否有 <style scoped>
   const hasScoped = descriptor.styles.some((s) => s.scoped)
 
   // script
@@ -239,12 +240,18 @@ export async function transformMain(
   if (!attachedProps.length) {
     output.push(`export default _sfc_main`)
   } else {
+    // 虚拟模块
+    // https://vite.dev/guide/api-plugin.html#virtual-modules-convention
+    // [['render', '_sfc_render'], ['__scopedId', 'data-v-xxx'], ['__file', 'your-filename']]
     output.push(
       `import _export_sfc from '${EXPORT_HELPER_ID}'`,
       `export default /*#__PURE__*/_export_sfc(_sfc_main, [${attachedProps
         .map(([key, val]) => `['${key}',${val}]`)
         .join(',')}])`,
     )
+    // =>
+    // import _export_sfc from '\0plugin-vue:export-helper';
+    // export default /*#__PURE__*/_export_sfc(_sfc_main, [['render', '_sfc_render'], ['__scopedId', 'data-v-[hash]'], ['__file', 'your-filename']])
   }
 
   // handle TS transpilation
