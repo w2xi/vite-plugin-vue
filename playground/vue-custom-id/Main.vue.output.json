@@ -1,0 +1,6 @@
+{
+  "scriptCode": "import Foo from './components/Foo.vue'\n\nconst _sfc_main = {\n  __name: 'Main',\n  setup(__props, { expose: __expose }) {\n  __expose();\n\n\nconst __returned__ = { Foo }\nObject.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true })\nreturn __returned__\n}\n\n}",
+  "templateCode": "import { openBlock as _openBlock, createBlock as _createBlock } from \"vue\"\n\nfunction _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {\n  return (_openBlock(), _createBlock($setup[\"Foo\"]))\n}",
+  "stylesCode": "",
+  "customBlocksCode": ""
+}

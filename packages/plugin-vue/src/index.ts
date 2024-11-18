@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import type { Plugin, ViteDevServer } from 'vite'
 import { createFilter, normalizePath } from 'vite'
-/* eslint-disable import/no-duplicates */
+ 
 import type {
   SFCBlock,
   SFCScriptCompileOptions,
@@ -9,7 +9,7 @@ import type {
   SFCTemplateCompileOptions,
 } from 'vue/compiler-sfc'
 import type * as _compiler from 'vue/compiler-sfc'
-/* eslint-enable import/no-duplicates */
+ 
 import { computed, shallowRef } from 'vue'
 import { version } from '../package.json'
 import { resolveCompiler } from './compiler'
@@ -345,7 +345,7 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin<Api> {
       }
     },
 
-    transform(code, id, opt) {
+    async transform(code, id, opt) {
       const ssr = opt?.ssr === true
       const { filename, query } = parseVueRequest(id)
 
@@ -384,7 +384,7 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin<Api> {
             customElementFilter.value(filename),
           )
         } else if (query.type === 'style') {
-          return transformStyle(
+          const result = await transformStyle(
             code,
             descriptor,
             Number(query.index || 0),
@@ -392,6 +392,23 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin<Api> {
             this,
             filename,
           )
+
+          fs.writeFileSync(
+            filename + '.style-block.json',
+            JSON.stringify(
+              {
+                id,
+                query,
+                code,
+                descriptor,
+                transformCode: result,
+              },
+              null,
+              2,
+            ),
+          )
+
+          return result
         }
       }
     },

@@ -2,6 +2,7 @@
   "name": "@vitejs/test-vue-custom-id",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -12,6 +13,8 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "workspace:*"
+    "@vitejs/plugin-vue": "workspace:*",
+    "js-yaml": "^4.1.0",
+    "vite-plugin-inspect": "^0.8.7"
   }
 }

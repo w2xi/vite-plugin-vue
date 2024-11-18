@@ -1,0 +1,152 @@
+{
+  "filename": "D:/www/github/vite-plugin-vue/playground/vue-custom-id/Main.vue",
+  "source": "<script setup>\nimport Foo from './components/Foo.vue'\n</script>\n\n<template>\n  <Foo />\n</template>\n",
+  "template": {
+    "type": "template",
+    "content": "\n  <Foo />\n",
+    "loc": {
+      "start": {
+        "column": 11,
+        "line": 5,
+        "offset": 75
+      },
+      "end": {
+        "column": 1,
+        "line": 7,
+        "offset": 86
+      },
+      "source": "\n  <Foo />\n"
+    },
+    "attrs": {},
+    "ast": {
+      "type": 0,
+      "source": "<script setup>\nimport Foo from './components/Foo.vue'\n</script>\n\n<template>\n  <Foo />\n</template>\n",
+      "children": [
+        {
+          "type": 1,
+          "tag": "Foo",
+          "ns": 0,
+          "tagType": 1,
+          "props": [],
+          "children": [],
+          "loc": {
+            "start": {
+              "column": 3,
+              "line": 6,
+              "offset": 78
+            },
+            "end": {
+              "column": 10,
+              "line": 6,
+              "offset": 85
+            },
+            "source": "<Foo />"
+          },
+          "codegenNode": {
+            "type": 13,
+            "tag": "$setup[\"Foo\"]",
+            "isBlock": true,
+            "disableTracking": false,
+            "isComponent": true,
+            "loc": {
+              "start": {
+                "column": 3,
+                "line": 6,
+                "offset": 78
+              },
+              "end": {
+                "column": 10,
+                "line": 6,
+                "offset": 85
+              },
+              "source": "<Foo />"
+            }
+          },
+          "isSelfClosing": true
+        }
+      ],
+      "helpers": {},
+      "components": [],
+      "directives": [],
+      "hoists": [],
+      "imports": [],
+      "cached": [],
+      "temps": 0,
+      "codegenNode": {
+        "type": 13,
+        "tag": "$setup[\"Foo\"]",
+        "isBlock": true,
+        "disableTracking": false,
+        "isComponent": true,
+        "loc": {
+          "start": {
+            "column": 3,
+            "line": 6,
+            "offset": 78
+          },
+          "end": {
+            "column": 10,
+            "line": 6,
+            "offset": 85
+          },
+          "source": "<Foo />"
+        }
+      },
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "source": ""
+      },
+      "transformed": true,
+      "filters": []
+    },
+    "map": {
+      "version": 3,
+      "sources": [
+        "D:/www/github/vite-plugin-vue/playground/vue-custom-id/Main.vue"
+      ],
+      "names": [],
+      "mappings": ";EAKE,CAAC,CAAC,CAAC,EAAE,CAAC",
+      "file": "D:/www/github/vite-plugin-vue/playground/vue-custom-id/Main.vue",
+      "sourceRoot": "",
+      "sourcesContent": [
+        "<script setup>\nimport Foo from './components/Foo.vue'\n</script>\n\n<template>\n  <Foo />\n</template>\n"
+      ]
+    }
+  },
+  "script": null,
+  "scriptSetup": {
+    "type": "script",
+    "content": "\nimport Foo from './components/Foo.vue'\n",
+    "loc": {
+      "start": {
+        "column": 15,
+        "line": 1,
+        "offset": 14
+      },
+      "end": {
+        "column": 1,
+        "line": 3,
+        "offset": 54
+      },
+      "source": "\nimport Foo from './components/Foo.vue'\n"
+    },
+    "attrs": {
+      "setup": true
+    },
+    "setup": true
+  },
+  "styles": [],
+  "customBlocks": [],
+  "cssVars": [],
+  "slotted": false,
+  "id": "main"
+}

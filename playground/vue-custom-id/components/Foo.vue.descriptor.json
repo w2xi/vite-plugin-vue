@@ -1,0 +1,984 @@
+{
+  "filename": "D:/www/github/vite-plugin-vue/playground/vue-custom-id/components/Foo.vue",
+  "source": "<script setup lang=\"ts\">\nimport { ref, getCurrentInstance } from 'vue'\nimport type { ConcreteComponent } from 'vue'\n\ntype A = ConcreteComponent & {\n  i18n: {\n    en: Record<string, string>\n    ja: Record<string, string>\n  }\n}\n\nconst instance = getCurrentInstance()\nconst resources = (instance.type as A).i18n\n\nconsole.log('instance', instance)\n\nconst t = (key) => resources.en[key] || resources.ja[key]\nconst msg = ref('Bar')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n  <p>{{ t('hello') }}</p>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>\n\n<i18n lang=\"yaml\">\nen:\n  hello: 'hello,vite!'\nja:\n  hello: 'こんにちは、vite！'\n</i18n>\n",
+  "template": {
+    "type": "template",
+    "content": "\n  <h1>{{ msg }}</h1>\n  <p>{{ t('hello') }}</p>\n",
+    "loc": {
+      "start": {
+        "column": 11,
+        "line": 21,
+        "offset": 447
+      },
+      "end": {
+        "column": 1,
+        "line": 24,
+        "offset": 495
+      },
+      "source": "\n  <h1>{{ msg }}</h1>\n  <p>{{ t('hello') }}</p>\n"
+    },
+    "attrs": {},
+    "ast": {
+      "type": 0,
+      "source": "<script setup lang=\"ts\">\nimport { ref, getCurrentInstance } from 'vue'\nimport type { ConcreteComponent } from 'vue'\n\ntype A = ConcreteComponent & {\n  i18n: {\n    en: Record<string, string>\n    ja: Record<string, string>\n  }\n}\n\nconst instance = getCurrentInstance()\nconst resources = (instance.type as A).i18n\n\nconsole.log('instance', instance)\n\nconst t = (key) => resources.en[key] || resources.ja[key]\nconst msg = ref('Bar')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n  <p>{{ t('hello') }}</p>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>\n\n<i18n lang=\"yaml\">\nen:\n  hello: 'hello,vite!'\nja:\n  hello: 'こんにちは、vite！'\n</i18n>\n",
+      "children": [
+        {
+          "type": 1,
+          "tag": "h1",
+          "ns": 0,
+          "tagType": 0,
+          "props": [],
+          "children": [
+            {
+              "type": 5,
+              "content": {
+                "type": 4,
+                "loc": {
+                  "start": {
+                    "column": 10,
+                    "line": 22,
+                    "offset": 457
+                  },
+                  "end": {
+                    "column": 13,
+                    "line": 22,
+                    "offset": 460
+                  },
+                  "source": "msg"
+                },
+                "content": "$setup.msg",
+                "isStatic": false,
+                "constType": 0,
+                "ast": null
+              },
+              "loc": {
+                "start": {
+                  "column": 7,
+                  "line": 22,
+                  "offset": 454
+                },
+                "end": {
+                  "column": 16,
+                  "line": 22,
+                  "offset": 463
+                },
+                "source": "{{ msg }}"
+              }
+            }
+          ],
+          "loc": {
+            "start": {
+              "column": 3,
+              "line": 22,
+              "offset": 450
+            },
+            "end": {
+              "column": 21,
+              "line": 22,
+              "offset": 468
+            },
+            "source": "<h1>{{ msg }}</h1>"
+          },
+          "codegenNode": {
+            "type": 13,
+            "tag": "\"h1\"",
+            "children": {
+              "type": 5,
+              "content": {
+                "type": 4,
+                "loc": {
+                  "start": {
+                    "column": 10,
+                    "line": 22,
+                    "offset": 457
+                  },
+                  "end": {
+                    "column": 13,
+                    "line": 22,
+                    "offset": 460
+                  },
+                  "source": "msg"
+                },
+                "content": "$setup.msg",
+                "isStatic": false,
+                "constType": 0,
+                "ast": null
+              },
+              "loc": {
+                "start": {
+                  "column": 7,
+                  "line": 22,
+                  "offset": 454
+                },
+                "end": {
+                  "column": 16,
+                  "line": 22,
+                  "offset": 463
+                },
+                "source": "{{ msg }}"
+              }
+            },
+            "patchFlag": 1,
+            "isBlock": false,
+            "disableTracking": false,
+            "isComponent": false,
+            "loc": {
+              "start": {
+                "column": 3,
+                "line": 22,
+                "offset": 450
+              },
+              "end": {
+                "column": 21,
+                "line": 22,
+                "offset": 468
+              },
+              "source": "<h1>{{ msg }}</h1>"
+            }
+          }
+        },
+        {
+          "type": 1,
+          "tag": "p",
+          "ns": 0,
+          "tagType": 0,
+          "props": [],
+          "children": [
+            {
+              "type": 5,
+              "content": {
+                "type": 8,
+                "loc": {
+                  "start": {
+                    "column": 9,
+                    "line": 23,
+                    "offset": 477
+                  },
+                  "end": {
+                    "column": 19,
+                    "line": 23,
+                    "offset": 487
+                  },
+                  "source": "t('hello')"
+                },
+                "children": [
+                  {
+                    "type": 4,
+                    "loc": {
+                      "start": {
+                        "offset": 477,
+                        "line": 23,
+                        "column": 9
+                      },
+                      "end": {
+                        "offset": 478,
+                        "line": 23,
+                        "column": 10
+                      },
+                      "source": "t"
+                    },
+                    "content": "$setup.t",
+                    "isStatic": false,
+                    "constType": 0
+                  },
+                  "('hello')"
+                ],
+                "ast": {
+                  "type": "CallExpression",
+                  "start": 1,
+                  "end": 11,
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "index": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 11,
+                      "index": 11
+                    }
+                  },
+                  "callee": {
+                    "type": "Identifier",
+                    "start": 1,
+                    "end": 2,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "index": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 2,
+                        "index": 2
+                      },
+                      "identifierName": "t"
+                    },
+                    "name": "$setup.t"
+                  },
+                  "arguments": [
+                    {
+                      "type": "StringLiteral",
+                      "start": 3,
+                      "end": 10,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 3,
+                          "index": 3
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 10,
+                          "index": 10
+                        }
+                      },
+                      "extra": {
+                        "rawValue": "hello",
+                        "raw": "'hello'"
+                      },
+                      "value": "hello"
+                    }
+                  ],
+                  "extra": {
+                    "parenthesized": true,
+                    "parenStart": 0
+                  },
+                  "comments": [],
+                  "errors": []
+                },
+                "identifiers": []
+              },
+              "loc": {
+                "start": {
+                  "column": 6,
+                  "line": 23,
+                  "offset": 474
+                },
+                "end": {
+                  "column": 22,
+                  "line": 23,
+                  "offset": 490
+                },
+                "source": "{{ t('hello') }}"
+              }
+            }
+          ],
+          "loc": {
+            "start": {
+              "column": 3,
+              "line": 23,
+              "offset": 471
+            },
+            "end": {
+              "column": 26,
+              "line": 23,
+              "offset": 494
+            },
+            "source": "<p>{{ t('hello') }}</p>"
+          },
+          "codegenNode": {
+            "type": 13,
+            "tag": "\"p\"",
+            "children": {
+              "type": 5,
+              "content": {
+                "type": 8,
+                "loc": {
+                  "start": {
+                    "column": 9,
+                    "line": 23,
+                    "offset": 477
+                  },
+                  "end": {
+                    "column": 19,
+                    "line": 23,
+                    "offset": 487
+                  },
+                  "source": "t('hello')"
+                },
+                "children": [
+                  {
+                    "type": 4,
+                    "loc": {
+                      "start": {
+                        "offset": 477,
+                        "line": 23,
+                        "column": 9
+                      },
+                      "end": {
+                        "offset": 478,
+                        "line": 23,
+                        "column": 10
+                      },
+                      "source": "t"
+                    },
+                    "content": "$setup.t",
+                    "isStatic": false,
+                    "constType": 0
+                  },
+                  "('hello')"
+                ],
+                "ast": {
+                  "type": "CallExpression",
+                  "start": 1,
+                  "end": 11,
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "index": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 11,
+                      "index": 11
+                    }
+                  },
+                  "callee": {
+                    "type": "Identifier",
+                    "start": 1,
+                    "end": 2,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "index": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 2,
+                        "index": 2
+                      },
+                      "identifierName": "t"
+                    },
+                    "name": "$setup.t"
+                  },
+                  "arguments": [
+                    {
+                      "type": "StringLiteral",
+                      "start": 3,
+                      "end": 10,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 3,
+                          "index": 3
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 10,
+                          "index": 10
+                        }
+                      },
+                      "extra": {
+                        "rawValue": "hello",
+                        "raw": "'hello'"
+                      },
+                      "value": "hello"
+                    }
+                  ],
+                  "extra": {
+                    "parenthesized": true,
+                    "parenStart": 0
+                  },
+                  "comments": [],
+                  "errors": []
+                },
+                "identifiers": []
+              },
+              "loc": {
+                "start": {
+                  "column": 6,
+                  "line": 23,
+                  "offset": 474
+                },
+                "end": {
+                  "column": 22,
+                  "line": 23,
+                  "offset": 490
+                },
+                "source": "{{ t('hello') }}"
+              }
+            },
+            "patchFlag": 1,
+            "isBlock": false,
+            "disableTracking": false,
+            "isComponent": false,
+            "loc": {
+              "start": {
+                "column": 3,
+                "line": 23,
+                "offset": 471
+              },
+              "end": {
+                "column": 26,
+                "line": 23,
+                "offset": 494
+              },
+              "source": "<p>{{ t('hello') }}</p>"
+            }
+          }
+        }
+      ],
+      "helpers": {},
+      "components": [],
+      "directives": [],
+      "hoists": [],
+      "imports": [],
+      "cached": [],
+      "temps": 0,
+      "codegenNode": {
+        "type": 13,
+        "children": [
+          {
+            "type": 1,
+            "tag": "h1",
+            "ns": 0,
+            "tagType": 0,
+            "props": [],
+            "children": [
+              {
+                "type": 5,
+                "content": {
+                  "type": 4,
+                  "loc": {
+                    "start": {
+                      "column": 10,
+                      "line": 22,
+                      "offset": 457
+                    },
+                    "end": {
+                      "column": 13,
+                      "line": 22,
+                      "offset": 460
+                    },
+                    "source": "msg"
+                  },
+                  "content": "$setup.msg",
+                  "isStatic": false,
+                  "constType": 0,
+                  "ast": null
+                },
+                "loc": {
+                  "start": {
+                    "column": 7,
+                    "line": 22,
+                    "offset": 454
+                  },
+                  "end": {
+                    "column": 16,
+                    "line": 22,
+                    "offset": 463
+                  },
+                  "source": "{{ msg }}"
+                }
+              }
+            ],
+            "loc": {
+              "start": {
+                "column": 3,
+                "line": 22,
+                "offset": 450
+              },
+              "end": {
+                "column": 21,
+                "line": 22,
+                "offset": 468
+              },
+              "source": "<h1>{{ msg }}</h1>"
+            },
+            "codegenNode": {
+              "type": 13,
+              "tag": "\"h1\"",
+              "children": {
+                "type": 5,
+                "content": {
+                  "type": 4,
+                  "loc": {
+                    "start": {
+                      "column": 10,
+                      "line": 22,
+                      "offset": 457
+                    },
+                    "end": {
+                      "column": 13,
+                      "line": 22,
+                      "offset": 460
+                    },
+                    "source": "msg"
+                  },
+                  "content": "$setup.msg",
+                  "isStatic": false,
+                  "constType": 0,
+                  "ast": null
+                },
+                "loc": {
+                  "start": {
+                    "column": 7,
+                    "line": 22,
+                    "offset": 454
+                  },
+                  "end": {
+                    "column": 16,
+                    "line": 22,
+                    "offset": 463
+                  },
+                  "source": "{{ msg }}"
+                }
+              },
+              "patchFlag": 1,
+              "isBlock": false,
+              "disableTracking": false,
+              "isComponent": false,
+              "loc": {
+                "start": {
+                  "column": 3,
+                  "line": 22,
+                  "offset": 450
+                },
+                "end": {
+                  "column": 21,
+                  "line": 22,
+                  "offset": 468
+                },
+                "source": "<h1>{{ msg }}</h1>"
+              }
+            }
+          },
+          {
+            "type": 1,
+            "tag": "p",
+            "ns": 0,
+            "tagType": 0,
+            "props": [],
+            "children": [
+              {
+                "type": 5,
+                "content": {
+                  "type": 8,
+                  "loc": {
+                    "start": {
+                      "column": 9,
+                      "line": 23,
+                      "offset": 477
+                    },
+                    "end": {
+                      "column": 19,
+                      "line": 23,
+                      "offset": 487
+                    },
+                    "source": "t('hello')"
+                  },
+                  "children": [
+                    {
+                      "type": 4,
+                      "loc": {
+                        "start": {
+                          "offset": 477,
+                          "line": 23,
+                          "column": 9
+                        },
+                        "end": {
+                          "offset": 478,
+                          "line": 23,
+                          "column": 10
+                        },
+                        "source": "t"
+                      },
+                      "content": "$setup.t",
+                      "isStatic": false,
+                      "constType": 0
+                    },
+                    "('hello')"
+                  ],
+                  "ast": {
+                    "type": "CallExpression",
+                    "start": 1,
+                    "end": 11,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "index": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 11,
+                        "index": 11
+                      }
+                    },
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 1,
+                      "end": 2,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "index": 1
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 2,
+                          "index": 2
+                        },
+                        "identifierName": "t"
+                      },
+                      "name": "$setup.t"
+                    },
+                    "arguments": [
+                      {
+                        "type": "StringLiteral",
+                        "start": 3,
+                        "end": 10,
+                        "loc": {
+                          "start": {
+                            "line": 1,
+                            "column": 3,
+                            "index": 3
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 10,
+                            "index": 10
+                          }
+                        },
+                        "extra": {
+                          "rawValue": "hello",
+                          "raw": "'hello'"
+                        },
+                        "value": "hello"
+                      }
+                    ],
+                    "extra": {
+                      "parenthesized": true,
+                      "parenStart": 0
+                    },
+                    "comments": [],
+                    "errors": []
+                  },
+                  "identifiers": []
+                },
+                "loc": {
+                  "start": {
+                    "column": 6,
+                    "line": 23,
+                    "offset": 474
+                  },
+                  "end": {
+                    "column": 22,
+                    "line": 23,
+                    "offset": 490
+                  },
+                  "source": "{{ t('hello') }}"
+                }
+              }
+            ],
+            "loc": {
+              "start": {
+                "column": 3,
+                "line": 23,
+                "offset": 471
+              },
+              "end": {
+                "column": 26,
+                "line": 23,
+                "offset": 494
+              },
+              "source": "<p>{{ t('hello') }}</p>"
+            },
+            "codegenNode": {
+              "type": 13,
+              "tag": "\"p\"",
+              "children": {
+                "type": 5,
+                "content": {
+                  "type": 8,
+                  "loc": {
+                    "start": {
+                      "column": 9,
+                      "line": 23,
+                      "offset": 477
+                    },
+                    "end": {
+                      "column": 19,
+                      "line": 23,
+                      "offset": 487
+                    },
+                    "source": "t('hello')"
+                  },
+                  "children": [
+                    {
+                      "type": 4,
+                      "loc": {
+                        "start": {
+                          "offset": 477,
+                          "line": 23,
+                          "column": 9
+                        },
+                        "end": {
+                          "offset": 478,
+                          "line": 23,
+                          "column": 10
+                        },
+                        "source": "t"
+                      },
+                      "content": "$setup.t",
+                      "isStatic": false,
+                      "constType": 0
+                    },
+                    "('hello')"
+                  ],
+                  "ast": {
+                    "type": "CallExpression",
+                    "start": 1,
+                    "end": 11,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "index": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 11,
+                        "index": 11
+                      }
+                    },
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 1,
+                      "end": 2,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "index": 1
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 2,
+                          "index": 2
+                        },
+                        "identifierName": "t"
+                      },
+                      "name": "$setup.t"
+                    },
+                    "arguments": [
+                      {
+                        "type": "StringLiteral",
+                        "start": 3,
+                        "end": 10,
+                        "loc": {
+                          "start": {
+                            "line": 1,
+                            "column": 3,
+                            "index": 3
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 10,
+                            "index": 10
+                          }
+                        },
+                        "extra": {
+                          "rawValue": "hello",
+                          "raw": "'hello'"
+                        },
+                        "value": "hello"
+                      }
+                    ],
+                    "extra": {
+                      "parenthesized": true,
+                      "parenStart": 0
+                    },
+                    "comments": [],
+                    "errors": []
+                  },
+                  "identifiers": []
+                },
+                "loc": {
+                  "start": {
+                    "column": 6,
+                    "line": 23,
+                    "offset": 474
+                  },
+                  "end": {
+                    "column": 22,
+                    "line": 23,
+                    "offset": 490
+                  },
+                  "source": "{{ t('hello') }}"
+                }
+              },
+              "patchFlag": 1,
+              "isBlock": false,
+              "disableTracking": false,
+              "isComponent": false,
+              "loc": {
+                "start": {
+                  "column": 3,
+                  "line": 23,
+                  "offset": 471
+                },
+                "end": {
+                  "column": 26,
+                  "line": 23,
+                  "offset": 494
+                },
+                "source": "<p>{{ t('hello') }}</p>"
+              }
+            }
+          }
+        ],
+        "patchFlag": 64,
+        "isBlock": true,
+        "disableTracking": false,
+        "isComponent": false,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "source": ""
+        }
+      },
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "source": ""
+      },
+      "transformed": true,
+      "filters": []
+    },
+    "map": {
+      "version": 3,
+      "sources": [
+        "D:/www/github/vite-plugin-vue/playground/vue-custom-id/components/Foo.vue"
+      ],
+      "names": [],
+      "mappings": ";EAqBE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;EACjB,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC",
+      "file": "D:/www/github/vite-plugin-vue/playground/vue-custom-id/components/Foo.vue",
+      "sourceRoot": "",
+      "sourcesContent": [
+        "<script setup lang=\"ts\">\nimport { ref, getCurrentInstance } from 'vue'\nimport type { ConcreteComponent } from 'vue'\n\ntype A = ConcreteComponent & {\n  i18n: {\n    en: Record<string, string>\n    ja: Record<string, string>\n  }\n}\n\nconst instance = getCurrentInstance()\nconst resources = (instance.type as A).i18n\n\nconsole.log('instance', instance)\n\nconst t = (key) => resources.en[key] || resources.ja[key]\nconst msg = ref('Bar')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n  <p>{{ t('hello') }}</p>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>\n\n<i18n lang=\"yaml\">\nen:\n  hello: 'hello,vite!'\nja:\n  hello: 'こんにちは、vite！'\n</i18n>\n"
+      ]
+    }
+  },
+  "script": null,
+  "scriptSetup": {
+    "type": "script",
+    "content": "\nimport { ref, getCurrentInstance } from 'vue'\nimport type { ConcreteComponent } from 'vue'\n\ntype A = ConcreteComponent & {\n  i18n: {\n    en: Record<string, string>\n    ja: Record<string, string>\n  }\n}\n\nconst instance = getCurrentInstance()\nconst resources = (instance.type as A).i18n\n\nconsole.log('instance', instance)\n\nconst t = (key) => resources.en[key] || resources.ja[key]\nconst msg = ref('Bar')\n",
+    "loc": {
+      "start": {
+        "column": 25,
+        "line": 1,
+        "offset": 24
+      },
+      "end": {
+        "column": 1,
+        "line": 19,
+        "offset": 426
+      },
+      "source": "\nimport { ref, getCurrentInstance } from 'vue'\nimport type { ConcreteComponent } from 'vue'\n\ntype A = ConcreteComponent & {\n  i18n: {\n    en: Record<string, string>\n    ja: Record<string, string>\n  }\n}\n\nconst instance = getCurrentInstance()\nconst resources = (instance.type as A).i18n\n\nconsole.log('instance', instance)\n\nconst t = (key) => resources.en[key] || resources.ja[key]\nconst msg = ref('Bar')\n"
+    },
+    "attrs": {
+      "setup": true,
+      "lang": "ts"
+    },
+    "setup": true,
+    "lang": "ts"
+  },
+  "styles": [
+    {
+      "type": "style",
+      "content": "\nh1 {\n  color: red;\n}\n",
+      "loc": {
+        "start": {
+          "column": 15,
+          "line": 26,
+          "offset": 522
+        },
+        "end": {
+          "column": 1,
+          "line": 30,
+          "offset": 544
+        },
+        "source": "\nh1 {\n  color: red;\n}\n"
+      },
+      "attrs": {
+        "scoped": true
+      },
+      "scoped": true,
+      "map": {
+        "version": 3,
+        "sources": [
+          "D:/www/github/vite-plugin-vue/playground/vue-custom-id/components/Foo.vue"
+        ],
+        "names": [],
+        "mappings": ";AA0BA,CAAC,EAAE;EACD,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;AACZ",
+        "file": "D:/www/github/vite-plugin-vue/playground/vue-custom-id/components/Foo.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<script setup lang=\"ts\">\nimport { ref, getCurrentInstance } from 'vue'\nimport type { ConcreteComponent } from 'vue'\n\ntype A = ConcreteComponent & {\n  i18n: {\n    en: Record<string, string>\n    ja: Record<string, string>\n  }\n}\n\nconst instance = getCurrentInstance()\nconst resources = (instance.type as A).i18n\n\nconsole.log('instance', instance)\n\nconst t = (key) => resources.en[key] || resources.ja[key]\nconst msg = ref('Bar')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n  <p>{{ t('hello') }}</p>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>\n\n<i18n lang=\"yaml\">\nen:\n  hello: 'hello,vite!'\nja:\n  hello: 'こんにちは、vite！'\n</i18n>\n"
+        ]
+      }
+    }
+  ],
+  "customBlocks": [
+    {
+      "type": "i18n",
+      "content": "\nen:\n  hello: 'hello,vite!'\nja:\n  hello: 'こんにちは、vite！'\n",
+      "loc": {
+        "start": {
+          "column": 19,
+          "line": 32,
+          "offset": 572
+        },
+        "end": {
+          "column": 1,
+          "line": 37,
+          "offset": 627
+        },
+        "source": "\nen:\n  hello: 'hello,vite!'\nja:\n  hello: 'こんにちは、vite！'\n"
+      },
+      "attrs": {
+        "lang": "yaml"
+      },
+      "lang": "yaml",
+      "map": {
+        "version": 3,
+        "sources": [
+          "D:/www/github/vite-plugin-vue/playground/vue-custom-id/components/Foo.vue"
+        ],
+        "names": [],
+        "mappings": ";AAgCA,CAAC,CAAC;EACA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrB,CAAC,CAAC;EACA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC",
+        "file": "D:/www/github/vite-plugin-vue/playground/vue-custom-id/components/Foo.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<script setup lang=\"ts\">\nimport { ref, getCurrentInstance } from 'vue'\nimport type { ConcreteComponent } from 'vue'\n\ntype A = ConcreteComponent & {\n  i18n: {\n    en: Record<string, string>\n    ja: Record<string, string>\n  }\n}\n\nconst instance = getCurrentInstance()\nconst resources = (instance.type as A).i18n\n\nconsole.log('instance', instance)\n\nconst t = (key) => resources.en[key] || resources.ja[key]\nconst msg = ref('Bar')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n  <p>{{ t('hello') }}</p>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>\n\n<i18n lang=\"yaml\">\nen:\n  hello: 'hello,vite!'\nja:\n  hello: 'こんにちは、vite！'\n</i18n>\n"
+        ]
+      }
+    }
+  ],
+  "cssVars": [],
+  "slotted": false,
+  "id": "components-foo"
+}

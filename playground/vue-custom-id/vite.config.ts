@@ -1,5 +1,8 @@
 import { defineConfig } from 'vite'
-import vuePlugin from '@vitejs/plugin-vue'
+import Inspect from 'vite-plugin-inspect'
+// import vuePlugin from '@vitejs/plugin-vue'
+import vuePlugin from '../../packages/plugin-vue/src/index'
+import { vueI18nPlugin } from '../vue/CustomBlockPlugin'
 
 export default defineConfig({
   plugins: [
@@ -13,6 +16,8 @@ export default defineConfig({
         },
       },
     }),
+    Inspect(),
+    vueI18nPlugin,
   ],
   build: {
     // to make tests faster

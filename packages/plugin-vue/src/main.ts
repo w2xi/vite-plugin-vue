@@ -126,6 +126,19 @@ export async function transformMain(
     stylesCode,
     customBlocksCode,
   ]
+
+  const outputObj = {
+    scriptCode,
+    templateCode,
+    stylesCode,
+    customBlocksCode,
+  }
+
+  fs.writeFileSync(
+    filename + '.output.json',
+    JSON.stringify(outputObj, null, 2),
+  )
+
   if (hasScoped) {
     attachedProps.push([`__scopeId`, JSON.stringify(`data-v-${descriptor.id}`)])
   }
@@ -254,6 +267,11 @@ export async function transformMain(
     // export default /*#__PURE__*/_export_sfc(_sfc_main, [['render', '_sfc_render'], ['__scopedId', 'data-v-[hash]'], ['__file', 'your-filename']])
   }
 
+  fs.writeFileSync(
+    filename + '.descriptor.json',
+    JSON.stringify(descriptor, null, 2),
+  )
+
   // handle TS transpilation
   let resolvedCode = output.join('\n')
   const lang = descriptor.scriptSetup?.lang || descriptor.script?.lang
@@ -279,6 +297,8 @@ export async function transformMain(
     resolvedCode = code
     resolvedMap = resolvedMap ? (map as any) : resolvedMap
   }
+
+  fs.writeFileSync(filename + '.resolvedCode.js', resolvedCode)
 
   return {
     code: resolvedCode,
