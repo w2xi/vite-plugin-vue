@@ -1,6 +1,8 @@
-## How to generate hash id
+## How to generate component id
 
-`packages\plugin-vue\src\utils\descriptorCache.ts`
+The code below shows how to generate `component id` and you also can customize it by specifying `componentIdGenerator` in `vite.config.js` to generate your own id.
+
+More detail check out: `packages\plugin-vue\src\utils\descriptorCache.ts#createDescriptor`
 
 ```js
 import crypto from 'node:crypto'
