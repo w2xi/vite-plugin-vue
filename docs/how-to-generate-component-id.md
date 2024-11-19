@@ -19,7 +19,7 @@ function getHash(text) {
   return hash('sha256', text, 'hex').substring(0, 8)
 }
 
-// This file just a demo
+// This file just is a demo
 // D:/www/demo/vite-project/src/components/HelloWorld.vue?vue&type=style&index=0&scoped=e17ea971&lang.css
 
 const filename = 'D:/www/demo/vite-project/src/components/HelloWorld.vue'
@@ -61,9 +61,9 @@ console.log(
 
 ```html
 <style>
-.demo {
-  color: red;
-}
+  .demo {
+    color: red;
+  }
 </style>
 <div class="demo"></div>
 ```
@@ -72,9 +72,9 @@ The code below will be transformed to:
 
 ```html
 <style>
-.demo[data-v-e17ea971] {
-  color: red;
-}
+  .demo[data-v-e17ea971] {
+    color: red;
+  }
 </style>
 <div class="demo"></div>
 ```
