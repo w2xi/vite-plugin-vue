@@ -1,0 +1,154 @@
+{
+  "filename": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/App.vue",
+  "source": "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\n</script>\n\n<template>\n  <HelloWorld />\n</template>\n\n<style scoped>\n\n</style>\n",
+  "template": {
+    "type": "template",
+    "content": "\n  <HelloWorld />\n",
+    "loc": {
+      "start": {
+        "column": 11,
+        "line": 5,
+        "offset": 99
+      },
+      "end": {
+        "column": 1,
+        "line": 7,
+        "offset": 117
+      },
+      "source": "\n  <HelloWorld />\n"
+    },
+    "attrs": {},
+    "ast": {
+      "type": 0,
+      "source": "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\n</script>\n\n<template>\n  <HelloWorld />\n</template>\n\n<style scoped>\n\n</style>\n",
+      "children": [
+        {
+          "type": 1,
+          "tag": "HelloWorld",
+          "ns": 0,
+          "tagType": 1,
+          "props": [],
+          "children": [],
+          "loc": {
+            "start": {
+              "column": 3,
+              "line": 6,
+              "offset": 102
+            },
+            "end": {
+              "column": 17,
+              "line": 6,
+              "offset": 116
+            },
+            "source": "<HelloWorld />"
+          },
+          "codegenNode": {
+            "type": 13,
+            "tag": "$setup[\"HelloWorld\"]",
+            "isBlock": true,
+            "disableTracking": false,
+            "isComponent": true,
+            "loc": {
+              "start": {
+                "column": 3,
+                "line": 6,
+                "offset": 102
+              },
+              "end": {
+                "column": 17,
+                "line": 6,
+                "offset": 116
+              },
+              "source": "<HelloWorld />"
+            }
+          },
+          "isSelfClosing": true
+        }
+      ],
+      "helpers": {},
+      "components": [],
+      "directives": [],
+      "hoists": [],
+      "imports": [],
+      "cached": [],
+      "temps": 0,
+      "codegenNode": {
+        "type": 13,
+        "tag": "$setup[\"HelloWorld\"]",
+        "isBlock": true,
+        "disableTracking": false,
+        "isComponent": true,
+        "loc": {
+          "start": {
+            "column": 3,
+            "line": 6,
+            "offset": 102
+          },
+          "end": {
+            "column": 17,
+            "line": 6,
+            "offset": 116
+          },
+          "source": "<HelloWorld />"
+        }
+      },
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "source": ""
+      },
+      "transformed": true,
+      "filters": []
+    },
+    "map": {
+      "version": 3,
+      "sources": [
+        "D:/www/github/vite-plugin-vue/playground/vue-demo/src/App.vue"
+      ],
+      "names": [],
+      "mappings": ";EAKE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC",
+      "file": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/App.vue",
+      "sourceRoot": "",
+      "sourcesContent": [
+        "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\n</script>\n\n<template>\n  <HelloWorld />\n</template>\n\n<style scoped>\n\n</style>\n"
+      ]
+    }
+  },
+  "script": null,
+  "scriptSetup": {
+    "type": "script",
+    "content": "\nimport HelloWorld from './components/HelloWorld.vue'\n",
+    "loc": {
+      "start": {
+        "column": 25,
+        "line": 1,
+        "offset": 24
+      },
+      "end": {
+        "column": 1,
+        "line": 3,
+        "offset": 78
+      },
+      "source": "\nimport HelloWorld from './components/HelloWorld.vue'\n"
+    },
+    "attrs": {
+      "setup": true,
+      "lang": "ts"
+    },
+    "setup": true,
+    "lang": "ts"
+  },
+  "styles": [],
+  "customBlocks": [],
+  "cssVars": [],
+  "slotted": false,
+  "id": "7a7a37b1"
+}

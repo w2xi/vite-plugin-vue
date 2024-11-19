@@ -1,0 +1,6 @@
+{
+  "scriptCode": "import { defineComponent as _defineComponent } from 'vue'\nimport HelloWorld from './components/HelloWorld.vue'\n\nconst _sfc_main = /*@__PURE__*/_defineComponent({\n  __name: 'App',\n  setup(__props, { expose: __expose }) {\n  __expose();\n\n\nconst __returned__ = { HelloWorld }\nObject.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true })\nreturn __returned__\n}\n\n})",
+  "templateCode": "import { openBlock as _openBlock, createBlock as _createBlock } from \"vue\"\n\nfunction _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {\n  return (_openBlock(), _createBlock($setup[\"HelloWorld\"]))\n}",
+  "stylesCode": "",
+  "customBlocksCode": ""
+}
