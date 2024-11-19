@@ -61,20 +61,20 @@ console.log(
 
 ```html
 <style>
-  .class-name-demo {
-    color: red;
-  }
+.demo {
+  color: red;
+}
 </style>
-<div class="class-name-demo">style</div>
+<div class="demo"></div>
 ```
 
-=>
+The code below will be transformed to:
 
 ```html
 <style>
-  .class-name-demo[data-v-e17ea971] {
-    color: red;
-  }
+.demo[data-v-e17ea971] {
+  color: red;
+}
 </style>
-<div class="class-name-demo">style</div>
+<div class="demo"></div>
 ```
