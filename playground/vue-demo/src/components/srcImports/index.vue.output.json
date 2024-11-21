@@ -1,0 +1,7 @@
+{
+  "scriptCode": "import _sfc_main from \"./script.js?vue&type=script&src=true&lang.js\"\nexport * from \"./script.js?vue&type=script&src=true&lang.js\"",
+  "templateCode": "import { render as _sfc_render } from \"./template.html?vue&type=template&src=true&lang.js\"",
+  "stylesCode": "\nimport \"./style.css?vue&type=style&index=0&src=true&lang.css\"",
+  "customBlocksCode": "",
+  "hasTemplateImport": 1
+}

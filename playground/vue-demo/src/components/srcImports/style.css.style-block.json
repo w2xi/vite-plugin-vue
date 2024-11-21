@@ -1,0 +1,91 @@
+{
+  "id": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/style.css?vue&type=style&index=0&src=true&lang.css",
+  "query": {
+    "vue": true,
+    "type": "style",
+    "index": 0,
+    "src": "true",
+    "lang.css": ""
+  },
+  "code": ".test {\n  color: orange;\n}\n",
+  "descriptor": {
+    "filename": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue",
+    "source": "<template src=\"./template.html\"></template>\n<style src=\"./style.css\"></style>\n<script src=\"./script.js\"></script>\n",
+    "template": {
+      "type": "template",
+      "content": "",
+      "loc": {
+        "start": {
+          "column": 33,
+          "line": 1,
+          "offset": 32
+        },
+        "end": {
+          "column": 33,
+          "line": 1,
+          "offset": 32
+        },
+        "source": ""
+      },
+      "attrs": {
+        "src": "./template.html"
+      },
+      "src": "./template.html"
+    },
+    "script": {
+      "type": "script",
+      "content": "",
+      "loc": {
+        "start": {
+          "column": 27,
+          "line": 3,
+          "offset": 104
+        },
+        "end": {
+          "column": 27,
+          "line": 3,
+          "offset": 104
+        },
+        "source": ""
+      },
+      "attrs": {
+        "src": "./script.js"
+      },
+      "src": "./script.js"
+    },
+    "scriptSetup": null,
+    "styles": [
+      {
+        "type": "style",
+        "content": "",
+        "loc": {
+          "start": {
+            "column": 26,
+            "line": 2,
+            "offset": 69
+          },
+          "end": {
+            "column": 26,
+            "line": 2,
+            "offset": 69
+          },
+          "source": ""
+        },
+        "attrs": {
+          "src": "./style.css"
+        },
+        "src": "./style.css"
+      }
+    ],
+    "customBlocks": [],
+    "cssVars": [],
+    "slotted": false,
+    "id": "b2ef2ffb"
+  },
+  "transformCode": {
+    "code": ".test {\n  color: orange;\n}\n",
+    "map": {
+      "mappings": ""
+    }
+  }
+}

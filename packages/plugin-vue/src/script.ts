@@ -125,3 +125,8 @@ export function canInlineMain(
   }
   return false
 }
+
+/**
+ * <script>, <script lang="js">, <script lang="ts"> return true, and of course with `setup` flag also return true
+ * <script src="xx.js"> or <script setup src="xx.js"> return false
+ */

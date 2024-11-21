@@ -132,6 +132,7 @@ export async function transformMain(
     templateCode,
     stylesCode,
     customBlocksCode,
+    hasTemplateImport: 1,
   }
 
   fs.writeFileSync(
@@ -400,6 +401,8 @@ async function genScriptCode(
       }
       map = script.map
     } else {
+      // 处理 <script src="xx.js">, <script setup src="xx.js"> 等情况
+
       if (script.src) {
         await linkSrcToDescriptor(script.src, descriptor, pluginContext, false)
       }

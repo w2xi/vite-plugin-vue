@@ -10,7 +10,7 @@
   "code": "\nh1 {\n  color: red;\n}\n",
   "descriptor": {
     "filename": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/HelloWorld.vue",
-    "source": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\n\nconst msg = ref('Hello World')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>",
+    "source": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\n\nconst msg = ref('Hello World')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>\n",
     "template": {
       "type": "template",
       "content": "\n  <h1>{{ msg }}</h1>\n",
@@ -30,7 +30,7 @@
       "attrs": {},
       "ast": {
         "type": 0,
-        "source": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\n\nconst msg = ref('Hello World')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>",
+        "source": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\n\nconst msg = ref('Hello World')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>\n",
         "children": [
           {
             "type": 1,
@@ -238,7 +238,7 @@
         "file": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/HelloWorld.vue",
         "sourceRoot": "",
         "sourcesContent": [
-          "<script setup lang=\"ts\">\nimport { ref } from 'vue'\n\nconst msg = ref('Hello World')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>"
+          "<script setup lang=\"ts\">\nimport { ref } from 'vue'\n\nconst msg = ref('Hello World')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>\n"
         ]
       }
     },
@@ -297,7 +297,7 @@
           "file": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/HelloWorld.vue",
           "sourceRoot": "",
           "sourcesContent": [
-            "<script setup lang=\"ts\">\nimport { ref } from 'vue'\n\nconst msg = ref('Hello World')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>"
+            "<script setup lang=\"ts\">\nimport { ref } from 'vue'\n\nconst msg = ref('Hello World')\n</script>\n\n<template>\n  <h1>{{ msg }}</h1>\n</template>\n\n<style scoped>\nh1 {\n  color: red;\n}\n</style>\n"
           ]
         }
       }

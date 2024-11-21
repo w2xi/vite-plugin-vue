@@ -2,5 +2,6 @@
   "scriptCode": "import { defineComponent as _defineComponent } from 'vue'\nimport { ref } from 'vue'\n\n\nconst _sfc_main = /*@__PURE__*/_defineComponent({\n  __name: 'HelloWorld',\n  setup(__props, { expose: __expose }) {\n  __expose();\n\nconst msg = ref('Hello World')\n\nconst __returned__ = { msg }\nObject.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true })\nreturn __returned__\n}\n\n})",
   "templateCode": "import { toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\n\nfunction _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {\n  return (_openBlock(), _createElementBlock(\"h1\", null, _toDisplayString($setup.msg), 1 /* TEXT */))\n}",
   "stylesCode": "\nimport \"D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/HelloWorld.vue?vue&type=style&index=0&scoped=e17ea971&lang.css\"",
-  "customBlocksCode": ""
+  "customBlocksCode": "",
+  "hasTemplateImport": 1
 }

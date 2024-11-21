@@ -1,26 +1,26 @@
 {
   "filename": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/App.vue",
-  "source": "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\n</script>\n\n<template>\n  <HelloWorld />\n</template>\n\n<style scoped>\n\n</style>\n",
+  "source": "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\n</script>\n\n<template>\n  <HelloWorld />\n  <SrcImports />\n</template>\n",
   "template": {
     "type": "template",
-    "content": "\n  <HelloWorld />\n",
+    "content": "\n  <HelloWorld />\n  <SrcImports />\n",
     "loc": {
       "start": {
         "column": 11,
-        "line": 5,
-        "offset": 99
+        "line": 6,
+        "offset": 158
       },
       "end": {
         "column": 1,
-        "line": 7,
-        "offset": 117
+        "line": 9,
+        "offset": 193
       },
-      "source": "\n  <HelloWorld />\n"
+      "source": "\n  <HelloWorld />\n  <SrcImports />\n"
     },
     "attrs": {},
     "ast": {
       "type": 0,
-      "source": "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\n</script>\n\n<template>\n  <HelloWorld />\n</template>\n\n<style scoped>\n\n</style>\n",
+      "source": "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\n</script>\n\n<template>\n  <HelloWorld />\n  <SrcImports />\n</template>\n",
       "children": [
         {
           "type": 1,
@@ -32,34 +32,76 @@
           "loc": {
             "start": {
               "column": 3,
-              "line": 6,
-              "offset": 102
+              "line": 7,
+              "offset": 161
             },
             "end": {
               "column": 17,
-              "line": 6,
-              "offset": 116
+              "line": 7,
+              "offset": 175
             },
             "source": "<HelloWorld />"
           },
           "codegenNode": {
             "type": 13,
             "tag": "$setup[\"HelloWorld\"]",
-            "isBlock": true,
+            "isBlock": false,
             "disableTracking": false,
             "isComponent": true,
             "loc": {
               "start": {
                 "column": 3,
-                "line": 6,
-                "offset": 102
+                "line": 7,
+                "offset": 161
               },
               "end": {
                 "column": 17,
-                "line": 6,
-                "offset": 116
+                "line": 7,
+                "offset": 175
               },
               "source": "<HelloWorld />"
+            }
+          },
+          "isSelfClosing": true
+        },
+        {
+          "type": 1,
+          "tag": "SrcImports",
+          "ns": 0,
+          "tagType": 1,
+          "props": [],
+          "children": [],
+          "loc": {
+            "start": {
+              "column": 3,
+              "line": 8,
+              "offset": 178
+            },
+            "end": {
+              "column": 17,
+              "line": 8,
+              "offset": 192
+            },
+            "source": "<SrcImports />"
+          },
+          "codegenNode": {
+            "type": 13,
+            "tag": "$setup[\"SrcImports\"]",
+            "isBlock": false,
+            "disableTracking": false,
+            "isComponent": true,
+            "loc": {
+              "start": {
+                "column": 3,
+                "line": 8,
+                "offset": 178
+              },
+              "end": {
+                "column": 17,
+                "line": 8,
+                "offset": 192
+              },
+              "source": "<SrcImports />"
             }
           },
           "isSelfClosing": true
@@ -74,22 +116,108 @@
       "temps": 0,
       "codegenNode": {
         "type": 13,
-        "tag": "$setup[\"HelloWorld\"]",
+        "children": [
+          {
+            "type": 1,
+            "tag": "HelloWorld",
+            "ns": 0,
+            "tagType": 1,
+            "props": [],
+            "children": [],
+            "loc": {
+              "start": {
+                "column": 3,
+                "line": 7,
+                "offset": 161
+              },
+              "end": {
+                "column": 17,
+                "line": 7,
+                "offset": 175
+              },
+              "source": "<HelloWorld />"
+            },
+            "codegenNode": {
+              "type": 13,
+              "tag": "$setup[\"HelloWorld\"]",
+              "isBlock": false,
+              "disableTracking": false,
+              "isComponent": true,
+              "loc": {
+                "start": {
+                  "column": 3,
+                  "line": 7,
+                  "offset": 161
+                },
+                "end": {
+                  "column": 17,
+                  "line": 7,
+                  "offset": 175
+                },
+                "source": "<HelloWorld />"
+              }
+            },
+            "isSelfClosing": true
+          },
+          {
+            "type": 1,
+            "tag": "SrcImports",
+            "ns": 0,
+            "tagType": 1,
+            "props": [],
+            "children": [],
+            "loc": {
+              "start": {
+                "column": 3,
+                "line": 8,
+                "offset": 178
+              },
+              "end": {
+                "column": 17,
+                "line": 8,
+                "offset": 192
+              },
+              "source": "<SrcImports />"
+            },
+            "codegenNode": {
+              "type": 13,
+              "tag": "$setup[\"SrcImports\"]",
+              "isBlock": false,
+              "disableTracking": false,
+              "isComponent": true,
+              "loc": {
+                "start": {
+                  "column": 3,
+                  "line": 8,
+                  "offset": 178
+                },
+                "end": {
+                  "column": 17,
+                  "line": 8,
+                  "offset": 192
+                },
+                "source": "<SrcImports />"
+              }
+            },
+            "isSelfClosing": true
+          }
+        ],
+        "patchFlag": 64,
         "isBlock": true,
         "disableTracking": false,
-        "isComponent": true,
+        "isComponent": false,
         "loc": {
           "start": {
-            "column": 3,
-            "line": 6,
-            "offset": 102
+            "line": 1,
+            "column": 1,
+            "offset": 0
           },
           "end": {
-            "column": 17,
-            "line": 6,
-            "offset": 116
+            "line": 1,
+            "column": 1,
+            "offset": 0
           },
-          "source": "<HelloWorld />"
+          "source": ""
         }
       },
       "loc": {
@@ -114,18 +242,18 @@
         "D:/www/github/vite-plugin-vue/playground/vue-demo/src/App.vue"
       ],
       "names": [],
-      "mappings": ";EAKE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC",
+      "mappings": ";EAME,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;EACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC",
       "file": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/App.vue",
       "sourceRoot": "",
       "sourcesContent": [
-        "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\n</script>\n\n<template>\n  <HelloWorld />\n</template>\n\n<style scoped>\n\n</style>\n"
+        "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\n</script>\n\n<template>\n  <HelloWorld />\n  <SrcImports />\n</template>\n"
       ]
     }
   },
   "script": null,
   "scriptSetup": {
     "type": "script",
-    "content": "\nimport HelloWorld from './components/HelloWorld.vue'\n",
+    "content": "\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\n",
     "loc": {
       "start": {
         "column": 25,
@@ -134,10 +262,10 @@
       },
       "end": {
         "column": 1,
-        "line": 3,
-        "offset": 78
+        "line": 4,
+        "offset": 137
       },
-      "source": "\nimport HelloWorld from './components/HelloWorld.vue'\n"
+      "source": "\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\n"
     },
     "attrs": {
       "setup": true,
