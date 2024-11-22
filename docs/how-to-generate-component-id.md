@@ -78,3 +78,11 @@ The code below will be transformed to:
 </style>
 <div class="demo"></div>
 ```
+
+## `feature.componentIdGenerator`
+
+This feature means we can customize the generation strategy of the component id.
+
+Check out a playground: [vue-custom-id](../playground/vue-custom-id/vite.config.ts)
+
+For Source code, check out: [componentIdGenerator](../packages/plugin-vue/src/utils/descriptorCache.ts#createDescriptor)
