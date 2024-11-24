@@ -1,0 +1,241 @@
+{
+  "type": "script",
+  "content": "\r\nexport default {\r\n  data() {\r\n    return {\r\n      msg: \"Hello Babel!\",\r\n    };\r\n  },\r\n};\r\n",
+  "loc": {
+    "start": {
+      "column": 20,
+      "line": 1,
+      "offset": 19
+    },
+    "end": {
+      "column": 1,
+      "line": 9,
+      "offset": 111
+    },
+    "source": "\r\nexport default {\r\n  data() {\r\n    return {\r\n      msg: \"Hello Babel!\",\r\n    };\r\n  },\r\n};\r\n"
+  },
+  "attrs": {
+    "lang": "jsx"
+  },
+  "lang": "jsx",
+  "map": {
+    "version": 3,
+    "sources": [
+      "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/multi-script/index.vue"
+    ],
+    "names": [],
+    "mappings": ";AACA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACb,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACL,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;MACL,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACrB,CAAC;EACH,CAAC;AACH,CAAC",
+    "file": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/multi-script/index.vue",
+    "sourceRoot": "",
+    "sourcesContent": [
+      "<script lang=\"jsx\">\r\nexport default {\r\n  data() {\r\n    return {\r\n      msg: \"Hello Babel!\",\r\n    };\r\n  },\r\n};\r\n</script>\r\n\r\n<template>\r\n  <div class=\"multi-script\">{{ msg }}</div>\r\n</template>\r\n\r\n<style scoped>\r\n.multi-script {\r\n  color: #aaa;\r\n}\r\n</style>"
+    ]
+  },
+  "bindings": {
+    "msg": "data"
+  },
+  "scriptAst": [
+    {
+      "type": "ExportDefaultDeclaration",
+      "start": 2,
+      "end": 90,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0,
+          "index": 2
+        },
+        "end": {
+          "line": 8,
+          "column": 2,
+          "index": 90
+        }
+      },
+      "declaration": {
+        "type": "ObjectExpression",
+        "start": 17,
+        "end": 89,
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 15,
+            "index": 17
+          },
+          "end": {
+            "line": 8,
+            "column": 1,
+            "index": 89
+          }
+        },
+        "properties": [
+          {
+            "type": "ObjectMethod",
+            "start": 22,
+            "end": 85,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 2,
+                "index": 22
+              },
+              "end": {
+                "line": 7,
+                "column": 3,
+                "index": 85
+              }
+            },
+            "method": true,
+            "key": {
+              "type": "Identifier",
+              "start": 22,
+              "end": 26,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 2,
+                  "index": 22
+                },
+                "end": {
+                  "line": 3,
+                  "column": 6,
+                  "index": 26
+                },
+                "identifierName": "data"
+              },
+              "name": "data"
+            },
+            "computed": false,
+            "kind": "method",
+            "id": null,
+            "generator": false,
+            "async": false,
+            "params": [],
+            "body": {
+              "type": "BlockStatement",
+              "start": 29,
+              "end": 85,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 9,
+                  "index": 29
+                },
+                "end": {
+                  "line": 7,
+                  "column": 3,
+                  "index": 85
+                }
+              },
+              "body": [
+                {
+                  "type": "ReturnStatement",
+                  "start": 36,
+                  "end": 80,
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 4,
+                      "index": 36
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 6,
+                      "index": 80
+                    }
+                  },
+                  "argument": {
+                    "type": "ObjectExpression",
+                    "start": 43,
+                    "end": 79,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 11,
+                        "index": 43
+                      },
+                      "end": {
+                        "line": 6,
+                        "column": 5,
+                        "index": 79
+                      }
+                    },
+                    "properties": [
+                      {
+                        "type": "ObjectProperty",
+                        "start": 52,
+                        "end": 71,
+                        "loc": {
+                          "start": {
+                            "line": 5,
+                            "column": 6,
+                            "index": 52
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 25,
+                            "index": 71
+                          }
+                        },
+                        "method": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 52,
+                          "end": 55,
+                          "loc": {
+                            "start": {
+                              "line": 5,
+                              "column": 6,
+                              "index": 52
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 9,
+                              "index": 55
+                            },
+                            "identifierName": "msg"
+                          },
+                          "name": "msg"
+                        },
+                        "computed": false,
+                        "shorthand": false,
+                        "value": {
+                          "type": "StringLiteral",
+                          "start": 57,
+                          "end": 71,
+                          "loc": {
+                            "start": {
+                              "line": 5,
+                              "column": 11,
+                              "index": 57
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 25,
+                              "index": 71
+                            }
+                          },
+                          "extra": {
+                            "rawValue": "Hello Babel!",
+                            "raw": "\"Hello Babel!\""
+                          },
+                          "value": "Hello Babel!"
+                        }
+                      }
+                    ],
+                    "extra": {
+                      "trailingComma": 71
+                    }
+                  }
+                }
+              ],
+              "directives": []
+            }
+          }
+        ],
+        "extra": {
+          "trailingComma": 85
+        }
+      }
+    }
+  ]
+}

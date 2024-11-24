@@ -1,26 +1,26 @@
 {
   "filename": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/App.vue",
-  "source": "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\n</script>\n\n<template>\n  <HelloWorld />\n  <SrcImports />\n</template>\n",
+  "source": "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\nimport MultiScript from './components/multi-script/index.vue'\n</script>\n\n<template>\n  <HelloWorld />\n  <SrcImports />\n  <MultiScript />\n</template>\n",
   "template": {
     "type": "template",
-    "content": "\n  <HelloWorld />\n  <SrcImports />\n",
+    "content": "\n  <HelloWorld />\n  <SrcImports />\n  <MultiScript />\n",
     "loc": {
       "start": {
         "column": 11,
-        "line": 6,
-        "offset": 158
+        "line": 7,
+        "offset": 220
       },
       "end": {
         "column": 1,
-        "line": 9,
-        "offset": 193
+        "line": 11,
+        "offset": 273
       },
-      "source": "\n  <HelloWorld />\n  <SrcImports />\n"
+      "source": "\n  <HelloWorld />\n  <SrcImports />\n  <MultiScript />\n"
     },
     "attrs": {},
     "ast": {
       "type": 0,
-      "source": "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\n</script>\n\n<template>\n  <HelloWorld />\n  <SrcImports />\n</template>\n",
+      "source": "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\nimport MultiScript from './components/multi-script/index.vue'\n</script>\n\n<template>\n  <HelloWorld />\n  <SrcImports />\n  <MultiScript />\n</template>\n",
       "children": [
         {
           "type": 1,
@@ -32,13 +32,13 @@
           "loc": {
             "start": {
               "column": 3,
-              "line": 7,
-              "offset": 161
+              "line": 8,
+              "offset": 223
             },
             "end": {
               "column": 17,
-              "line": 7,
-              "offset": 175
+              "line": 8,
+              "offset": 237
             },
             "source": "<HelloWorld />"
           },
@@ -51,13 +51,13 @@
             "loc": {
               "start": {
                 "column": 3,
-                "line": 7,
-                "offset": 161
+                "line": 8,
+                "offset": 223
               },
               "end": {
                 "column": 17,
-                "line": 7,
-                "offset": 175
+                "line": 8,
+                "offset": 237
               },
               "source": "<HelloWorld />"
             }
@@ -74,13 +74,13 @@
           "loc": {
             "start": {
               "column": 3,
-              "line": 8,
-              "offset": 178
+              "line": 9,
+              "offset": 240
             },
             "end": {
               "column": 17,
-              "line": 8,
-              "offset": 192
+              "line": 9,
+              "offset": 254
             },
             "source": "<SrcImports />"
           },
@@ -93,15 +93,57 @@
             "loc": {
               "start": {
                 "column": 3,
-                "line": 8,
-                "offset": 178
+                "line": 9,
+                "offset": 240
               },
               "end": {
                 "column": 17,
-                "line": 8,
-                "offset": 192
+                "line": 9,
+                "offset": 254
               },
               "source": "<SrcImports />"
+            }
+          },
+          "isSelfClosing": true
+        },
+        {
+          "type": 1,
+          "tag": "MultiScript",
+          "ns": 0,
+          "tagType": 1,
+          "props": [],
+          "children": [],
+          "loc": {
+            "start": {
+              "column": 3,
+              "line": 10,
+              "offset": 257
+            },
+            "end": {
+              "column": 18,
+              "line": 10,
+              "offset": 272
+            },
+            "source": "<MultiScript />"
+          },
+          "codegenNode": {
+            "type": 13,
+            "tag": "$setup[\"MultiScript\"]",
+            "isBlock": false,
+            "disableTracking": false,
+            "isComponent": true,
+            "loc": {
+              "start": {
+                "column": 3,
+                "line": 10,
+                "offset": 257
+              },
+              "end": {
+                "column": 18,
+                "line": 10,
+                "offset": 272
+              },
+              "source": "<MultiScript />"
             }
           },
           "isSelfClosing": true
@@ -127,13 +169,13 @@
             "loc": {
               "start": {
                 "column": 3,
-                "line": 7,
-                "offset": 161
+                "line": 8,
+                "offset": 223
               },
               "end": {
                 "column": 17,
-                "line": 7,
-                "offset": 175
+                "line": 8,
+                "offset": 237
               },
               "source": "<HelloWorld />"
             },
@@ -146,13 +188,13 @@
               "loc": {
                 "start": {
                   "column": 3,
-                  "line": 7,
-                  "offset": 161
+                  "line": 8,
+                  "offset": 223
                 },
                 "end": {
                   "column": 17,
-                  "line": 7,
-                  "offset": 175
+                  "line": 8,
+                  "offset": 237
                 },
                 "source": "<HelloWorld />"
               }
@@ -169,13 +211,13 @@
             "loc": {
               "start": {
                 "column": 3,
-                "line": 8,
-                "offset": 178
+                "line": 9,
+                "offset": 240
               },
               "end": {
                 "column": 17,
-                "line": 8,
-                "offset": 192
+                "line": 9,
+                "offset": 254
               },
               "source": "<SrcImports />"
             },
@@ -188,15 +230,57 @@
               "loc": {
                 "start": {
                   "column": 3,
-                  "line": 8,
-                  "offset": 178
+                  "line": 9,
+                  "offset": 240
                 },
                 "end": {
                   "column": 17,
-                  "line": 8,
-                  "offset": 192
+                  "line": 9,
+                  "offset": 254
                 },
                 "source": "<SrcImports />"
+              }
+            },
+            "isSelfClosing": true
+          },
+          {
+            "type": 1,
+            "tag": "MultiScript",
+            "ns": 0,
+            "tagType": 1,
+            "props": [],
+            "children": [],
+            "loc": {
+              "start": {
+                "column": 3,
+                "line": 10,
+                "offset": 257
+              },
+              "end": {
+                "column": 18,
+                "line": 10,
+                "offset": 272
+              },
+              "source": "<MultiScript />"
+            },
+            "codegenNode": {
+              "type": 13,
+              "tag": "$setup[\"MultiScript\"]",
+              "isBlock": false,
+              "disableTracking": false,
+              "isComponent": true,
+              "loc": {
+                "start": {
+                  "column": 3,
+                  "line": 10,
+                  "offset": 257
+                },
+                "end": {
+                  "column": 18,
+                  "line": 10,
+                  "offset": 272
+                },
+                "source": "<MultiScript />"
               }
             },
             "isSelfClosing": true
@@ -242,18 +326,18 @@
         "D:/www/github/vite-plugin-vue/playground/vue-demo/src/App.vue"
       ],
       "names": [],
-      "mappings": ";EAME,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;EACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC",
+      "mappings": ";EAOE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;EACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;EACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC",
       "file": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/App.vue",
       "sourceRoot": "",
       "sourcesContent": [
-        "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\n</script>\n\n<template>\n  <HelloWorld />\n  <SrcImports />\n</template>\n"
+        "<script setup lang=\"ts\">\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\nimport MultiScript from './components/multi-script/index.vue'\n</script>\n\n<template>\n  <HelloWorld />\n  <SrcImports />\n  <MultiScript />\n</template>\n"
       ]
     }
   },
   "script": null,
   "scriptSetup": {
     "type": "script",
-    "content": "\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\n",
+    "content": "\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\nimport MultiScript from './components/multi-script/index.vue'\n",
     "loc": {
       "start": {
         "column": 25,
@@ -262,10 +346,10 @@
       },
       "end": {
         "column": 1,
-        "line": 4,
-        "offset": 137
+        "line": 5,
+        "offset": 199
       },
-      "source": "\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\n"
+      "source": "\nimport HelloWorld from './components/HelloWorld.vue'\nimport SrcImports from './components/srcImports/index.vue'\nimport MultiScript from './components/multi-script/index.vue'\n"
     },
     "attrs": {
       "setup": true,

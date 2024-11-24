@@ -22,6 +22,7 @@ export async function transformTemplateAsModule(
   code: string
   map: any
 }> {
+  // 模板编译
   const result = compile(
     code,
     descriptor,
@@ -30,7 +31,7 @@ export async function transformTemplateAsModule(
     ssr,
     customElement,
   )
-
+  // 渲染函数字符串代码
   let returnCode = result.code
   if (
     options.devServer &&

@@ -404,6 +404,7 @@ async function genScriptCode(
       // 处理 <script src="xx.js">, <script setup src="xx.js"> 等情况
 
       if (script.src) {
+        // 设置缓存
         await linkSrcToDescriptor(script.src, descriptor, pluginContext, false)
       }
       const src = script.src || descriptor.filename

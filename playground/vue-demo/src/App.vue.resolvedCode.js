@@ -1,11 +1,12 @@
 import { defineComponent as _defineComponent } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import SrcImports from "./components/srcImports/index.vue";
+import MultiScript from "./components/multi-script/index.vue";
 const _sfc_main = /* @__PURE__ */ _defineComponent({
   __name: "App",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { HelloWorld, SrcImports };
+    const __returned__ = { HelloWorld, SrcImports, MultiScript };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -17,7 +18,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     null,
     [
       _createVNode($setup["HelloWorld"]),
-      _createVNode($setup["SrcImports"])
+      _createVNode($setup["SrcImports"]),
+      _createVNode($setup["MultiScript"])
     ],
     64
     /* STABLE_FRAGMENT */

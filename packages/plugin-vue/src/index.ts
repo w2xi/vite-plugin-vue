@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import type { Plugin, ViteDevServer } from 'vite'
 import { createFilter, normalizePath } from 'vite'
- 
+
 import type {
   SFCBlock,
   SFCScriptCompileOptions,
@@ -9,7 +9,7 @@ import type {
   SFCTemplateCompileOptions,
 } from 'vue/compiler-sfc'
 import type * as _compiler from 'vue/compiler-sfc'
- 
+
 import { computed, shallowRef } from 'vue'
 import { version } from '../package.json'
 import { resolveCompiler } from './compiler'
@@ -298,10 +298,12 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin<Api> {
     async resolveId(id) {
       // component export helper
       if (id === EXPORT_HELPER_ID) {
+        // 虚拟模块，返回自定义的虚拟模块 id, 配合 load 钩子提供虚拟模块的内容
         return id
       }
       // serve sub-part requests (*?vue) as virtual modules
       if (parseVueRequest(id).query.vue) {
+        // 标记子请求(*?vue)为虚拟模块
         return id
       }
     },
@@ -317,11 +319,13 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin<Api> {
       // select corresponding block for sub-part virtual modules
       if (query.vue) {
         if (query.src) {
+          // 直接读取文件内容
           return fs.readFileSync(filename, 'utf-8')
         }
         const descriptor = getDescriptor(filename, options.value)!
         let block: SFCBlock | null | undefined
         if (query.type === 'script') {
+          // 目前不知道什么场景下会进入这个分支
           // handle <script> + <script setup> merge via compileScript()
           block = resolveScript(
             descriptor,
@@ -330,10 +334,13 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin<Api> {
             customElementFilter.value(filename),
           )
         } else if (query.type === 'template') {
+          // 目前不知道什么场景下会进入这个分支
           block = descriptor.template!
         } else if (query.type === 'style') {
+          // case: "*.vue?vue&type=style&index=0&scoped=[componentId]&lang.css"
           block = descriptor.styles[query.index!]
         } else if (query.index != null) {
+          // case: "*vue?vue&type=i18n&index=0&lang.yaml" (custom block, see playground/vue-custom-id)
           block = descriptor.customBlocks[query.index]
         }
         if (block) {
@@ -375,6 +382,7 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin<Api> {
           : getDescriptor(filename, options.value)!
 
         if (query.type === 'template') {
+          // case: "*.html?vue&type=template&src=true&lang.js"
           return transformTemplateAsModule(
             code,
             descriptor,
@@ -384,6 +392,8 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin<Api> {
             customElementFilter.value(filename),
           )
         } else if (query.type === 'style') {
+          // case 1: "*.vue?vue&type=style&index=0&scoped=[componentId]&lang.css"
+          // case 2: "*.css?vue&type=style&index=0&src=true&lang.css"
           const result = await transformStyle(
             code,
             descriptor,

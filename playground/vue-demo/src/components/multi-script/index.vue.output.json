@@ -1,0 +1,7 @@
+{
+  "scriptCode": "\nconst __default__ = {\n  name: 'MultiScript',\n}\n\nconst _sfc_main = /*@__PURE__*/Object.assign(__default__, {\n  setup(__props, { expose: __expose }) {\n  __expose();\n\nconst msg = 'MultiScript'\n\nconst __returned__ = { msg }\nObject.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true })\nreturn __returned__\n}\n\n})",
+  "templateCode": "import { toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\n\nfunction _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {\n  return (_openBlock(), _createElementBlock(\"div\", null, _toDisplayString($setup.msg)))\n}",
+  "stylesCode": "\nimport \"D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/multi-script/index.vue?vue&type=style&index=0&scoped=3441d5f9&lang.css\"",
+  "customBlocksCode": "",
+  "hasTemplateImport": 1
+}
