@@ -42,7 +42,7 @@
 <script src="./script.js"></script>
 ```
 
-经过 `transform` hook 钩子:
+`transform` hook 代码如下:
 
 ```js
 async function transform(code, id, opt) {
@@ -59,12 +59,22 @@ async function transform(code, id, opt) {
 }
 ```
 
-`transformMain` 函数的伪代码如下:
+`transformMain` 函数的代码如下:
 
 ```ts
-async function transformMain(...) {
+async function transformMain(
+  code: string,
+  filename: string,
+  options: ResolvedOptions,
+  // ... other params
+) {
+  // 创建 .vue 文件的描述符，包含了 script, template, style 等信息
+  const { descriptor } = createDescriptor(filename, code, options)
+  // 生成 script 代码
   const { code: scriptCode } = await genScriptCode(...)
+  // 生成 template 代码
   const { code: templateCode } = await genTemplateCode(...)
+  // 生成 style 代码
   const stylesCode = await genStyleCode(...)
 
   const output: string[] = [
@@ -82,20 +92,79 @@ async function transformMain(...) {
     // ...
   }
 }
+
+// 创建 vue 组件的描述符
+function createDescriptor(
+  filename: string,
+  source: string,
+) {
+  // 调用 @vue/compiler-sfc 的 parse 函数来解析 .vue 文件的代码
+  const { descriptor, errors } = compiler.parse(source, {
+    filename,
+    // other options
+  })
+  return { descriptor }
+}
 ```
 
-转换后，得到的 `resolvedCode` 如下:
+而上面的 `descriptor` 描述符就是一个对象，下面是打印的 `json` 格式的数据:
+
+> 具体见 `playground/vue-demo/src/components/srcImports/index.vue.descriptor.json` 文件
+
+```json
+{
+  "filename": "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue",
+  "source": "<template src=\"./template.html\"></template>\n<style src=\"./style.css\"></style>\n<script src=\"./script.js\"></script>\n",
+  "template": {
+    "type": "template",
+    "content": "",
+    "attrs": {
+      "src": "./template.html"
+    },
+    "src": "./template.html"
+  },
+  "script": {
+    "type": "script",
+    "content": "",
+    "attrs": {
+      "src": "./script.js"
+    },
+    "src": "./script.js"
+  },
+  "scriptSetup": null,
+  "styles": [
+    {
+      "type": "style",
+      "content": "",
+      "attrs": {
+        "src": "./style.css"
+      },
+      "src": "./style.css"
+    }
+  ],
+  "customBlocks": [],
+  "id": "b2ef2ffb"
+  // 省略了部分属性
+}
+```
+
+这里，可以重点关注下 `script`, `template` 和 `styles` 属性，可以看到它们都有一个 `src` 属性用于引入外部文件。
+
+而最终，这里的 `transformMain` 函数得到的 `resolvedCode` 如下:
 
 ```js
 // script
-import _sfc_main from './script.js?vue&type=script&src=true&lang.js'
-export * from './script.js?vue&type=script&src=true&lang.js'
+import _sfc_main from "./script.js?vue&type=script&src=true&lang.js"
+export * from "./script.js?vue&type=script&src=true&lang.js"
 // template
-import { render as _sfc_render } from './template.html?vue&type=template&src=true&lang.js'
+import { render as _sfc_render } from "./template.html?vue&type=template&src=true&lang.js"
 // style
-import './style.css?vue&type=style&index=0&src=true&lang.css'
+import "./style.css?vue&type=style&index=0&src=true&lang.css"
 
-// ...ignore other code
+// ... ignore HMR code
+
+import _export_sfc from 'plugin-vue:export-helper'
+export default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',"D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue"]])
 ```
 
 也就得到了在前面所说的，将 `.vue` 文件分成多个子模块的效果 ———— 导入自身的时候，加上不同的query字符串，这样构建系统就能把每个请求处理为"虚拟"模块。
@@ -109,6 +178,9 @@ import './style.css?vue&type=style&index=0&src=true&lang.css'
 `resolveId` hook 代码如下:
 
 ```js
+// plugin-vue/src/helper.ts
+export const EXPORT_HELPER_ID = '\0plugin-vue:export-helper'
+
 async function resolveId(id) {
   // component export helper
   if (id === EXPORT_HELPER_ID) {
@@ -121,7 +193,12 @@ async function resolveId(id) {
 }
 ```
 
-可以看到，它会将子请求(\*?vue)处理为虚拟模块，以配合 `load` hook 提供虚拟模块的内容。
+可以看到，当解析到:
+
+1. `import _export_sfc from 'plugin-vue:export-helper'`
+2. `import xxx from *?vue`
+
+这中类似请求时，会被转换为虚拟模块。
 
 再来看看 `load` hook 的代码:
 
@@ -142,37 +219,52 @@ function load(id, opt) {
       // case 3: "*.css?vue&type=style&index=0&src=true&lang.css"
       return fs.readFileSync(filename, 'utf-8')
     }
-    // 获取vue文件的描述符
-    const descriptor = getDescriptor(filename, options.value)!
-    let block: SFCBlock | null | undefined
-    if (query.type === 'script') {
-      // handle <script> + <script setup> merge via compileScript()
-      block = resolveScript(
-        descriptor,
-        options.value,
-        ssr,
-        customElementFilter.value(filename),
-      )
-    } else if (query.type === 'template') {
-      block = descriptor.template!
-    } else if (query.type === 'style') {
-      // vue 支持多个 <style> 标签，因此 index 表示是第几个 <style> 标签
-      block = descriptor.styles[query.index!]
-    } else if (query.index != null) {
-      // 自定义 block
-      block = descriptor.customBlocks[query.index]
-    }
-    if (block) {
-      return {
-        code: block.content,
-        map: block.map as any,
-      }
-    }
+    // ...ignore other code
   }
 }
 ```
 
-由于这里的 demo 都是 `src imports` 的形式，所以会直接读取文件内容并返回。
+可以看到，当 `id === EXPORT_HELPER_ID`，会直接返回 helperCode，即:
+
+`plugin-vue/src/helper.ts`
+
+```ts
+export const EXPORT_HELPER_ID = '\0plugin-vue:export-helper'
+
+export const helperCode = `
+export default (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+}
+`
+```
+
+再结合前面出现在 `resolveCode` 中的代码:
+
+```js
+import _export_sfc from 'plugin-vue:export-helper'
+export default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',"D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue"]])
+```
+
+等价于 <=>
+
+```js
+const _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+}
+// 将渲染函数添加到组件上
+_sfc_main.render = _sfc_render
+_sfc_main.__file = "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue"
+
+export default _sfc_main
+```
 
 再来看看 `transform` hook 代码:
 
@@ -189,14 +281,7 @@ async function transform(code, id, opt) {
   }
   if (!query.vue) {
     // main request
-    return transformMain(
-      code,
-      filename,
-      options.value,
-      this,
-      ssr,
-      customElementFilter.value(filename),
-    )
+    return transformMain(...)
   } else {
     // sub block request
     const descriptor = query.src
@@ -234,3 +319,38 @@ async function transform(code, id, opt) {
 如果 `query.type === 'template'`，则会调用 `transformTemplateAsModule` 函数，该函数其实是调用了 `@vue/compiler-sfc` 的 `compileTemplate` 函数————将模板字符串编译成渲染函数字符串。
 
 如果 `query.type === 'style'`，则会调用 `transformStyle` 函数，该函数其实是调用了 `@vue/compiler-sfc` 的 `compileStyleAsync` 函数————对 css 进行处理 (应用 css 预处理器，postcss 等转换成原生 css 格式)。
+
+对于 `template`:
+
+```js
+import { render as _sfc_render } from "./template.html?vue&type=template&src=true&lang.js"
+```
+
+转换后得到:
+
+```js
+import { toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"
+
+const _hoisted_1 = { class: "test" }
+
+// 渲染函数
+export function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (_openBlock(), _createElementBlock("div", _hoisted_1, _toDisplayString(_ctx.msg), 1 /* TEXT */))
+}
+```
+
+对于 `style`
+
+```js
+import "./style.css?vue&type=style&index=0&src=true&lang.css"
+```
+
+转换后得到:
+
+> 因里就是原生 css ，所以没有做任何转换处理，如果是 less, scss, stylus 等预处理器语言，则会被转换成原生的 css。
+
+```css
+.test {
+  color: orange;
+}
+```
