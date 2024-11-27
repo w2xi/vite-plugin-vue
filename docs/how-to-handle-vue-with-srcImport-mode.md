@@ -154,17 +154,23 @@ function createDescriptor(
 
 ```js
 // script
-import _sfc_main from "./script.js?vue&type=script&src=true&lang.js"
-export * from "./script.js?vue&type=script&src=true&lang.js"
+import _sfc_main from './script.js?vue&type=script&src=true&lang.js'
+export * from './script.js?vue&type=script&src=true&lang.js'
 // template
-import { render as _sfc_render } from "./template.html?vue&type=template&src=true&lang.js"
+import { render as _sfc_render } from './template.html?vue&type=template&src=true&lang.js'
 // style
-import "./style.css?vue&type=style&index=0&src=true&lang.css"
+import './style.css?vue&type=style&index=0&src=true&lang.css'
 
 // ... ignore HMR code
 
 import _export_sfc from 'plugin-vue:export-helper'
-export default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',"D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue"]])
+export default /*#__PURE__*/ _export_sfc(_sfc_main, [
+  ['render', _sfc_render],
+  [
+    '__file',
+    'D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue',
+  ],
+])
 ```
 
 也就得到了在前面所说的，将 `.vue` 文件分成多个子模块的效果 ———— 导入自身的时候，加上不同的query字符串，这样构建系统就能把每个请求处理为"虚拟"模块。
@@ -246,22 +252,29 @@ export default (sfc, props) => {
 
 ```js
 import _export_sfc from 'plugin-vue:export-helper'
-export default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',"D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue"]])
+export default /*#__PURE__*/ _export_sfc(_sfc_main, [
+  ['render', _sfc_render],
+  [
+    '__file',
+    'D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue',
+  ],
+])
 ```
 
 等价于 <=>
 
 ```js
 const _export_sfc = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
+  const target = sfc.__vccOpts || sfc
   for (const [key, val] of props) {
-    target[key] = val;
+    target[key] = val
   }
-  return target;
+  return target
 }
 // 将渲染函数添加到组件上
 _sfc_main.render = _sfc_render
-_sfc_main.__file = "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue"
+_sfc_main.__file =
+  'D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue'
 
 export default _sfc_main
 ```
@@ -323,34 +336,196 @@ async function transform(code, id, opt) {
 对于 `template`:
 
 ```js
-import { render as _sfc_render } from "./template.html?vue&type=template&src=true&lang.js"
+import { render as _sfc_render } from './template.html?vue&type=template&src=true&lang.js'
 ```
 
 转换后得到:
 
 ```js
-import { toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"
+import {
+  toDisplayString as _toDisplayString,
+  openBlock as _openBlock,
+  createElementBlock as _createElementBlock,
+} from 'vue'
 
-const _hoisted_1 = { class: "test" }
+const _hoisted_1 = { class: 'test' }
 
-// 渲染函数
 export function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (_openBlock(), _createElementBlock("div", _hoisted_1, _toDisplayString(_ctx.msg), 1 /* TEXT */))
+  return (
+    _openBlock(),
+    _createElementBlock(
+      'div',
+      _hoisted_1,
+      _toDisplayString(_ctx.msg),
+      1 /* TEXT */,
+    )
+  )
 }
 ```
 
-对于 `style`
+对于 `style`:
 
 ```js
-import "./style.css?vue&type=style&index=0&src=true&lang.css"
+import './style.css?vue&type=style&index=0&src=true&lang.css'
 ```
 
 转换后得到:
 
-> 因里就是原生 css ，所以没有做任何转换处理，如果是 less, scss, stylus 等预处理器语言，则会被转换成原生的 css。
+> 因为这里用的是原生 css ，所以没有做任何转换处理，如果使用的是 less, scss, stylus 等预处理器语言，则会被转换成原生的 css。
 
 ```css
 .test {
   color: orange;
 }
+```
+
+显然，对于上面的 css 字符串，浏览器是不认识的，因此还需要进一步处理将其写入到 html 中。
+
+那它是如何被处理的呢？这就需要靠 vite 内置的插件来处理了，它依次被 `vite:css`, 和 `vite:css-post` 插件处理，最终得到的结果如下:
+
+```js
+import {
+  updateStyle as __vite__updateStyle,
+  removeStyle as __vite__removeStyle,
+} from '/@vite/client'
+const __vite__id =
+  'D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/style.css'
+const __vite__css = '.test {\n  color: orange;\n}\n'
+__vite__updateStyle(__vite__id, __vite__css)
+
+// ...ignore HMR code
+```
+
+即:
+
+```ts
+const __vite__updateStyle = updateStyle
+const __vite__id =
+  'D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/style.css'
+const __vite__css = '.test {\n  color: orange;\n}\n'
+__vite__updateStyle(__vite__id, __vite__css)
+
+// `vite\packages\vite\src\client\client.ts#updateStyle`
+export function updateStyle(id: string, content: string): void {
+  let style = sheetsMap.get(id)
+  if (!style) {
+    style = document.createElement('style')
+    style.setAttribute('type', 'text/css')
+    style.setAttribute('data-vite-dev-id', id)
+    style.textContent = content
+    // insert into html
+    document.head.appendChild(style)
+  } else {
+    style.textContent = content
+  }
+  sheetsMap.set(id, style)
+}
+```
+
+而对于 `script`, `transform` hook 并没有对它做任何处理，而是在 `load` hook 中:
+
+```js
+function load(id, opt) {
+  // ...
+  const { filename, query } = parseVueRequest(id)
+  if (query.vue) {
+    if (query.src) {
+      // 如果是 src imports 的形式，则返回文件内容
+      // case: "*.js?vue&type=script&src=true&lang.js"
+      return fs.readFileSync(filename, 'utf-8')
+    }
+  }
+  // ...
+}
+```
+
+可以看到，`script` 的内容直接从文件中读取并返回了。
+
+所以，对于 `index.vue`:
+
+```html
+<template src="./template.html"></template>
+<style src="./style.css"></style>
+<script src="./script.js"></script>
+```
+
+在第一次 `transform` hook，会被 `transformMain` 函数处理，得到的 `resolvedCode` 如下:
+
+```js
+// script
+import _sfc_main from './script.js?vue&type=script&src=true&lang.js'
+export * from './script.js?vue&type=script&src=true&lang.js'
+// template
+import { render as _sfc_render } from './template.html?vue&type=template&src=true&lang.js'
+// style
+import './style.css?vue&type=style&index=0&src=true&lang.css'
+
+// ... ignore HMR code
+
+import _export_sfc from 'plugin-vue:export-helper'
+export default /*#__PURE__*/ _export_sfc(_sfc_main, [
+  ['render', _sfc_render],
+  [
+    '__file',
+    'D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue',
+  ],
+])
+```
+
+然后，在经过一系列处理后，最终会得到:
+
+```js
+// script
+const _sfc_main = {
+  name: 'Test',
+  setup() {
+    return {
+      msg: 'Hello App',
+    }
+  },
+}
+
+// template
+import { toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"
+
+const _hoisted_1 = { class: "test" }
+
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (_openBlock(), _createElementBlock("div", _hoisted_1, _toDisplayString(_ctx.msg), 1 /* TEXT */))
+}
+
+// style
+const __vite__id = "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/style.css"
+const __vite__css = ".test {\n  color: orange;\n}\n"
+__vite__updateStyle(__vite__id, __vite__css)
+
+function __vite__updateStyle(id: string, content: string): void {
+  let style = sheetsMap.get(id)
+  if (!style) {
+    style = document.createElement('style')
+    style.setAttribute('type', 'text/css')
+    style.setAttribute('data-vite-dev-id', id)
+    style.textContent = content
+    // insert into html
+    document.head.appendChild(style)
+  } else {
+    style.textContent = content
+  }
+  sheetsMap.set(id, style)
+}
+
+// ... ignore HMR code
+
+const _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+}
+
+_sfc_main.render = _sfc_render
+_sfc_main.__file = "D:/www/github/vite-plugin-vue/playground/vue-demo/src/components/srcImports/index.vue"
+
+export default _sfc_main
 ```
